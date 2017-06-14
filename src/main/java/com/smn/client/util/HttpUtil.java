@@ -103,7 +103,7 @@ public class HttpUtil {
 	@SuppressWarnings("rawtypes")
 	public static AuthBean postForIamToken(String iamUrl, String bodyMessage) throws Exception {
 		LOGGER.debug("Start to get iam token. IamUrl is {}.", iamUrl);
-		SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
+		SSLContext sslContext = SSLContexts.custom().useProtocol("TLSV1.1").loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
 		SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(sslContext,
 				new NoopHostnameVerifier());
 		CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslSocketFactory).build();
@@ -169,7 +169,7 @@ public class HttpUtil {
 	public static Map<String, Object> postForSmsMessage(String smnUrl, String bodyMessage, String projectId,
 			String token) throws Exception {
 		LOGGER.debug("Start to send sms message. SmnUrl is {}.", smnUrl);
-		SSLContext sslContext = SSLContexts.custom().loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
+		SSLContext sslContext = SSLContexts.custom().useProtocol("TLSV1.1").loadTrustMaterial(null, new TrustSelfSignedStrategy()).build();
 		SSLConnectionSocketFactory sslSocketFactory = new SSLConnectionSocketFactory(sslContext,
 				new NoopHostnameVerifier());
 		CloseableHttpClient httpclient = HttpClients.custom().setSSLSocketFactory(sslSocketFactory).build();
