@@ -26,3 +26,6 @@ smn.endpoint=https://smn.cn-north-1.myhwclouds.com
 ```
 
 run com.smn.client.SmnClientTest to send a message   
+
+需要注意 由于API网关升级SSL安全协议，只接受TLSV1.1和TLSV1.2的协议    
+老版本的JDK低版本无法支持TLS1.1，连接服务端指定TLS协议
